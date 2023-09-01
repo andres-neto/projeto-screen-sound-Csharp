@@ -1,6 +1,6 @@
 ﻿namespace TerceiroProjetoCsharp.Modelos;
 
-internal class Banda
+internal class Banda : IAvaliavel
 {
     private List<Album> albuns = new List<Album>();
     private List<Avaliacao> notas = new();
@@ -9,7 +9,6 @@ internal class Banda
     {
         Nome = nome;
     }
-
     public string Nome { get; }
     public double Media
     {
@@ -19,7 +18,8 @@ internal class Banda
             else return notas.Average(a => a.Nota);
         }
     }
-    public List<Album> Albuns => albuns;
+    public string? Resumo { get; set; }
+    public IEnumerable<Album> Albuns => albuns;
 
     public void AdicionarAlbum(Album album) 
     { 
